@@ -13,11 +13,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Tests for {@link }. Modify the tests in order to support your use case as you build your project.
+ * Tests for {@link GetDiskHandler}. Modify the tests in order to support your use case as you build your project.
  */
-@DisplayName("Tests for HelloWorldHandler")
-public class HelloWorldHandlerTest {
-//
+@DisplayName("Tests for GetDisksHandler")
+public class GetDisksTest {
+
 //    private static final String EXPECTED_CONTENT_TYPE = "application/json";
 //    private static final String EXPECTED_RESPONSE_VALUE = "Hello World!";
 //    private static final int EXPECTED_STATUS_CODE_SUCCESS = 200;
@@ -47,12 +47,12 @@ public class HelloWorldHandlerTest {
 //    }
 //
 //    /**
-//     * Basic test to verify the result obtained when calling {@link HelloWorldHandler} successfully.
+//     * Basic test to verify the result obtained when calling {@link GetDiskHandler} successfully.
 //     */
 //    @Test
 //    @DisplayName("Basic test for request handler")
 //    void testHandleRequest() {
-//        GatewayResponse response = (GatewayResponse) new HelloWorldHandler().handleRequest(input, mockLambdaContext);
+//        GatewayResponse response = (GatewayResponse) new GetDiskHandler().handleRequest(input, mockLambdaContext);
 //
 //        // Verify the response obtained matches the values we expect.
 //        JSONObject jsonObjectFromResponse = new JSONObject(response.getBody());

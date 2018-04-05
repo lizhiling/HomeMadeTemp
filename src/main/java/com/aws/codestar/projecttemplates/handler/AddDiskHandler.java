@@ -17,11 +17,8 @@ import java.util.Map;
  */
 @Component
 public class AddDiskHandler implements RequestHandler<Disk, Object> {
+    @Autowired
     private DiskRepository diskRepository;
-
-    public AddDiskHandler(@Autowired DiskRepository diskRepository){
-        this.diskRepository = diskRepository;
-    }
 
     @Override
     public Object handleRequest(final Disk input, final Context context) {

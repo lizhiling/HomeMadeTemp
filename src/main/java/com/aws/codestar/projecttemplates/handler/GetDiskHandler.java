@@ -18,12 +18,8 @@ import java.util.Map;
  */
 @Component
 public class GetDiskHandler implements RequestHandler<Object, Object> {
-
+    @Autowired
     private DiskRepository diskRepository;
-
-    public GetDiskHandler(@Autowired DiskRepository diskRepository){
-        this.diskRepository = diskRepository;
-    }
 
     @Override
     public Object handleRequest(final Object input, final Context context) {
