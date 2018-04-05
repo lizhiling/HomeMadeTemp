@@ -7,6 +7,7 @@ import com.aws.codestar.projecttemplates.entities.Disk;
 import com.aws.codestar.projecttemplates.repositories.DiskRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -17,7 +18,14 @@ import java.util.Map;
  * Handler for requests to Lambda function.
  */
 @Component
-public class GetDiskHandler implements RequestHandler<Object, Object> {
+public class GetDiskHandler implements RequestHandler<Object, Object>{
+    static AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
+            GetDiskHandler.class.getPackage().getName());
+
+    public GetDiskHandler() {
+        ctx.getAutowireCapableBeanFactory().autowireBean(this);
+    }
+
     @Autowired
     private DiskRepository diskRepository;
 
