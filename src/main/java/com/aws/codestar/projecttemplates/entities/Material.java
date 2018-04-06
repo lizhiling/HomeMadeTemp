@@ -1,8 +1,10 @@
 package com.aws.codestar.projecttemplates.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,10 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
-@Table
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 public class Material {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +27,9 @@ public class Material {
 
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY)
+            fetch = FetchType.LAZY, mappedBy = "materials")
+    @JsonManagedReference
+    @JsonBackReference
+    @JsonIgnoreProperties("materials")
     private Set<Disk> disks = new HashSet<>();
 }

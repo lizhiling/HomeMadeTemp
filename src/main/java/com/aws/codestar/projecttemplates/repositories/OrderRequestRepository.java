@@ -1,13 +1,15 @@
 package com.aws.codestar.projecttemplates.repositories;
 
-import com.aws.codestar.projecttemplates.entities.Disk;
+import com.aws.codestar.projecttemplates.dto.OrderRequestDto;
+import com.aws.codestar.projecttemplates.entities.OrderRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.UUID;
 
 @Transactional
 @Repository
-public interface OrderRepository extends JpaRepository<Disk, Integer> {
+public interface OrderRequestRepository extends JpaRepository<OrderRequest, UUID> {
 
 }

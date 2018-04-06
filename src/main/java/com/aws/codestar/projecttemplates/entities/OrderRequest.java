@@ -1,25 +1,32 @@
 package com.aws.codestar.projecttemplates.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Data
-@Table
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 public class OrderRequest {
+    public enum OrderType{
+        Breakfast, Lunch, Dinner
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
-    private int id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(unique = true, updatable = false, nullable = false)
+    private UUID id;
 
     @NotNull
     private OrderType ordertype;
@@ -33,8 +40,4 @@ public class OrderRequest {
     private Set<Integer> disks = new HashSet<>();
 
     private String note;
-}
-
-enum OrderType{
-    Breakfast, Lunch, Dinner
 }
