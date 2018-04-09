@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Outputs:
+  HomeMadeApi:
+    Description: URL for application
+    Export:
+      Name: HomeMadeApi
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/homemade
+Parameters:
+  ProjectId:
+    Description: AWS CodeStar projectID used to associate new resources to team members
+    Type: String
+Resources:
+  HomeMadeFunction:
+    Properties:
+      CodeUri: s3://aws-codestar-us-east-2-118580340676/25b8e36b77f639f2a5614507cc01ee7e
+      Events:
+        GetResource:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+      Handler: com.aws.codestar.projecttemplates.StreamLambdaHandler::handleRequest
+      MemorySize: 1512
+      Policies: AWSLambdaBasicExecutionRole
+      Runtime: java8
+      Timeout: 60
+    Type: AWS::Serverless::Function
+Transform:
+- AWS::Serverless-2016-10-31
+- AWS::CodeStar
