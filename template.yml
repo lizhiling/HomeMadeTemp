@@ -13,7 +13,7 @@ Resources:
     Properties:
       Handler: com.aws.codestar.projecttemplates.StreamLambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: target/HomeMade-1.0.jar
+      CodeUri: target/HelloWorld-1.0.jar
       MemorySize: 1512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 60
