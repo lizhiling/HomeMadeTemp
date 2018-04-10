@@ -14,7 +14,7 @@ Resources:
     Properties:
       Handler: com.aws.codestar.projecttemplates.StreamLambdaHandler::handleRequest
       Runtime: java8
-      CodeUri: s3://aws-codestar-us-east-2-118580340676/6695501e4ab9f18db8f12f01b784d7be
+      CodeUri: s3://aws-codestar-us-east-2-118580340676/2896ec3576936336c2a1ba8ce26050f1
       MemorySize: 1512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 60
